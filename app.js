@@ -17,6 +17,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRouter');
 const bookingRouter = require('./routes/bookingRoutes');
+const bookingController = require('./controllers/bookingController');
 const viewRouter = require('./routes/viewRoutes');
 
 // Start express app
@@ -99,6 +100,9 @@ const limiter = rateLimit({
   message: 'Too many request from this ip, plese try again in an hour',
 });
 app.use('/api', limiter);
+
+app.post('/webhook-checkout', express.raw({ type: 'application/json' }), bookingController.webhookCheckout);
+
 // Body Perser, reading data from body into request object(req.body)
 app.use(express.json({ limit: '10kb' }));
 // Parse the data that comming from urlencoded form
