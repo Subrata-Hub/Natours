@@ -39,54 +39,54 @@ app.options('*', cors());
 // Set Security HTTP Headers
 // FOR MAP
 
-// const scriptSrcUrls = [
-//   'https://api.tiles.mapbox.com/',
-//   'https://api.mapbox.com/',
-//   'https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js',
-//   'https://*.js.stripe.com',
-// ];
-// const styleSrcUrls = [
-//   'https://api.mapbox.com/',
-//   'https://api.tiles.mapbox.com/',
-//   'https://fonts.googleapis.com/',
-//   'https://events.mapbox.com/',
-// ];
-// const connectSrcUrls = [
-//   'https://api.mapbox.com/',
-//   'https://a.tiles.mapbox.com/',
-//   'https://b.tiles.mapbox.com/',
-//   'https://events.mapbox.com/',
-// ];
-// const fontSrcUrls = ['fonts.googleapis.com', 'fonts.gstatic.com', 'https://events.mapbox.com/'];
-// const frameSrcUrls = ['http://*.stripe.com'];
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
-//       defaultSrc: [],
-//       frameSrc: ["'self'", ...frameSrcUrls],
-//       connectSrc: ["'self'", ...connectSrcUrls],
-//       scriptSrc: ["'self'", ...scriptSrcUrls],
-//       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-//       workerSrc: ["'self'", 'blob:'],
-//       objectSrc: [],
-//       imgSrc: ["'self'", 'blob:', 'data:'],
-//       fontSrc: ["'self'", ...fontSrcUrls],
-//     },
-//   })
-// );
-
-// app.use(helmet());
-
+const scriptSrcUrls = [
+  'https://api.tiles.mapbox.com/',
+  'https://api.mapbox.com/',
+  'https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js',
+  'https://js.stripe.com',
+];
+const styleSrcUrls = [
+  'https://api.mapbox.com/',
+  'https://api.tiles.mapbox.com/',
+  'https://fonts.googleapis.com/',
+  'https://events.mapbox.com/',
+];
+const connectSrcUrls = [
+  'https://api.mapbox.com/',
+  'https://a.tiles.mapbox.com/',
+  'https://b.tiles.mapbox.com/',
+  'https://events.mapbox.com/',
+];
+const fontSrcUrls = ['fonts.googleapis.com', 'fonts.gstatic.com', 'https://events.mapbox.com/'];
+const frameSrcUrls = ['https://js.stripe.com'];
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      'script-src': ['https://*.stripe.com', "'self'"],
-      'connect-src': ["'self'", '*'],
-      'frame-src': ["'self'", 'https://*.stripe.com'],
-      'img-src': ["'self'", 'data', 'https://*.stripe.com'],
+      defaultSrc: [],
+      frameSrc: ["'self'", ...frameSrcUrls],
+      connectSrc: ["'self'", ...connectSrcUrls],
+      scriptSrc: ["'self'", ...scriptSrcUrls],
+      styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+      workerSrc: ["'self'", 'blob:'],
+      objectSrc: [],
+      imgSrc: ["'self'", 'blob:', 'data:'],
+      fontSrc: ["'self'", ...fontSrcUrls],
     },
   })
 );
+
+// app.use(helmet());
+
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       'script-src': ['https://*.stripe.com', "'self'"],
+//       'connect-src': ["'self'", '*'],
+//       'frame-src': ["'self'", 'https://*.stripe.com'],
+//       'img-src': ["'self'", 'data', 'https://*.stripe.com'],
+//     },
+//   })
+// );
 
 // Development Login
 console.log(process.env.NODE_ENV);
